@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import TemplateGallery from "@/components/organisms/TemplateGallery";
 import { useNotes } from "@/hooks/useNotes";
 import { useAutoSave } from "@/hooks/useAutoSave";
 import { useKeyboard } from "@/hooks/useKeyboard";
 import ApperIcon from "@/components/ApperIcon";
+import TemplateGallery from "@/components/organisms/TemplateGallery";
 import SaveIndicator from "@/components/molecules/SaveIndicator";
 import Textarea from "@/components/atoms/Textarea";
 import Input from "@/components/atoms/Input";
@@ -119,10 +119,8 @@ const handleNewNote = async () => {
     return (
       <div className={cn("flex-1 flex items-center justify-center p-8", className)}>
         <div className="text-center max-w-md">
-          <ApperIcon name="FileText" size={64} className="mx-auto mb-4 text-gray-300" />
+<ApperIcon name="FileText" size={64} className="mx-auto mb-4 text-gray-300" />
           <h2 className="text-2xl font-display font-semibold text-gray-900 mb-2">
-            Welcome to Notely
-<h2 className="text-2xl font-display font-semibold text-gray-900 mb-2">
             Welcome to Notely
           </h2>
           <p className="text-gray-600 mb-6">
@@ -132,9 +130,10 @@ const handleNewNote = async () => {
             <ApperIcon name="Plus" size={20} className="mr-2" />
             Create Your First Note
           </Button>
-        </div>
+</div>
       </div>
     );
+  }
 
   return (
     <div className={cn("flex-1 flex flex-col h-full", className)}>
