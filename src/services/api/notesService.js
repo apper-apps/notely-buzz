@@ -18,7 +18,7 @@ export const notesService = {
     return note ? { ...note } : null;
   },
 
-  async createNote(noteData) {
+async createNote(noteData) {
     await delay(250);
     const newNote = {
       Id: Math.max(...notes.map(n => n.Id), 0) + 1,

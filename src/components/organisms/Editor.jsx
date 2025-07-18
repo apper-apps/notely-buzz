@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import ApperIcon from "@/components/ApperIcon";
-import Button from "@/components/atoms/Button";
-import IconButton from "@/components/atoms/IconButton";
-import Input from "@/components/atoms/Input";
-import Textarea from "@/components/atoms/Textarea";
-import SaveIndicator from "@/components/molecules/SaveIndicator";
+import TemplateGallery from "@/components/organisms/TemplateGallery";
 import { useNotes } from "@/hooks/useNotes";
 import { useAutoSave } from "@/hooks/useAutoSave";
 import { useKeyboard } from "@/hooks/useKeyboard";
+import ApperIcon from "@/components/ApperIcon";
+import SaveIndicator from "@/components/molecules/SaveIndicator";
+import Textarea from "@/components/atoms/Textarea";
+import Input from "@/components/atoms/Input";
+import Button from "@/components/atoms/Button";
+import IconButton from "@/components/atoms/IconButton";
 import { cn } from "@/utils/cn";
 
 const Editor = ({ className }) => {
@@ -22,13 +23,14 @@ const Editor = ({ className }) => {
     lastSaved,
     isSaving,
     createNote,
+    createNoteFromTemplate,
     setActiveNoteId
   } = useNotes();
 
   const activeNote = getActiveNote();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
+  const [showTemplateGallery, setShowTemplateGallery] = useState(false);
   // Initialize editor with active note
   useEffect(() => {
     if (activeNote) {
@@ -81,11 +83,23 @@ const Editor = ({ className }) => {
       await removeNote(activeNoteId);
     }
   };
+const handleNewNote = async () => {
+    setShowTemplateGallery(true);
+  };
 
-  const handleNewNote = async () => {
-    const newNote = await createNote();
-    if (newNote) {
-      setActiveNoteId(newNote.Id);
+  const handleTemplateSelect = async (template) => {
+    try {
+      let newNote;
+      if (template) {
+        newNote = await createNoteFromTemplate(template);
+      } else {
+        newNote = await createNote();
+      }
+      if (newNote) {
+        setActiveNoteId(newNote.Id);
+      }
+    } catch (error) {
+      console.error("Failed to create note:", error);
     }
   };
 
@@ -108,6 +122,8 @@ const Editor = ({ className }) => {
           <ApperIcon name="FileText" size={64} className="mx-auto mb-4 text-gray-300" />
           <h2 className="text-2xl font-display font-semibold text-gray-900 mb-2">
             Welcome to Notely
+<h2 className="text-2xl font-display font-semibold text-gray-900 mb-2">
+            Welcome to Notely
           </h2>
           <p className="text-gray-600 mb-6">
             Start capturing your thoughts by creating a new note or selecting an existing one from the sidebar.
@@ -119,7 +135,6 @@ const Editor = ({ className }) => {
         </div>
       </div>
     );
-  }
 
   return (
     <div className={cn("flex-1 flex flex-col h-full", className)}>
@@ -192,8 +207,15 @@ const Editor = ({ className }) => {
               <span>{content.length} characters</span>
             )}
           </div>
-        </div>
+</div>
       </div>
+
+      {/* Template Gallery Modal */}
+      <TemplateGallery
+        isOpen={showTemplateGallery}
+        onClose={() => setShowTemplateGallery(false)}
+        onSelectTemplate={handleTemplateSelect}
+      />
     </div>
   );
 };

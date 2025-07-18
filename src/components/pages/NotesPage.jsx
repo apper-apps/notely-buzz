@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import Editor from "@/components/organisms/Editor";
@@ -6,16 +6,18 @@ import SearchBar from "@/components/molecules/SearchBar";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
+import TemplateGallery from "@/components/organisms/TemplateGallery";
 import { useNotes } from "@/hooks/useNotes";
-
 const NotesPage = () => {
   const { id } = useParams();
+  const [showTemplateGallery, setShowTemplateGallery] = useState(false);
   const { 
     notes, 
     loading, 
     error, 
     loadNotes, 
     createNote, 
+    createNoteFromTemplate,
     setActiveNoteId,
     activeNoteId 
   } = useNotes();
@@ -26,10 +28,23 @@ const NotesPage = () => {
     }
   }, [id, setActiveNoteId]);
 
-  const handleCreateNote = async () => {
-    const newNote = await createNote();
-    if (newNote) {
-      setActiveNoteId(newNote.Id);
+const handleCreateNote = async () => {
+    setShowTemplateGallery(true);
+  };
+
+  const handleTemplateSelect = async (template) => {
+    try {
+      let newNote;
+      if (template) {
+        newNote = await createNoteFromTemplate(template);
+      } else {
+        newNote = await createNote();
+      }
+      if (newNote) {
+        setActiveNoteId(newNote.Id);
+      }
+    } catch (error) {
+      console.error("Failed to create note:", error);
     }
   };
 
@@ -65,11 +80,17 @@ const NotesPage = () => {
       </div>
       
       {/* Editor */}
-      <div className="flex-1 overflow-hidden">
+<div className="flex-1 overflow-hidden">
         <Editor />
       </div>
+
+      {/* Template Gallery Modal */}
+      <TemplateGallery
+        isOpen={showTemplateGallery}
+        onClose={() => setShowTemplateGallery(false)}
+        onSelectTemplate={handleTemplateSelect}
+      />
     </motion.div>
   );
 };
-
 export default NotesPage;

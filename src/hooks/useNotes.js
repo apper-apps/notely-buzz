@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { notesService } from "@/services/api/notesService";
+import { templateService } from "@/services/api/templateService";
 import {
   setNotes,
   setFolders,
@@ -75,6 +76,29 @@ export const useNotes = () => {
       return newNote;
     } catch (err) {
       toast.error("Failed to create note");
+      throw err;
+    }
+};
+
+  const createNoteFromTemplate = async (template, noteData = {}) => {
+    try {
+      const templateContent = await templateService.getTemplateById(template.Id);
+      if (!templateContent) {
+        throw new Error("Template not found");
+      }
+
+      const newNote = await notesService.createNote({
+        title: template.name,
+        content: templateContent.content,
+        ...noteData
+      });
+      
+      dispatch(addNote(newNote));
+      dispatch(setActiveNote(newNote.Id));
+      toast.success(`Note created from ${template.name} template`);
+      return newNote;
+    } catch (err) {
+      toast.error("Failed to create note from template");
       throw err;
     }
   };
@@ -182,7 +206,7 @@ export const useNotes = () => {
     dispatch(setActiveNote(id));
   };
 
-  return {
+return {
     notes,
     folders,
     activeNoteId,
@@ -197,6 +221,7 @@ export const useNotes = () => {
     loadNotes,
     loadFolders,
     createNote,
+    createNoteFromTemplate,
     saveNote,
     removeNote,
     searchNotes,

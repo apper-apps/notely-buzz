@@ -25,14 +25,14 @@ const notesSlice = createSlice({
     addNote: (state, action) => {
       state.notes.push(action.payload);
     },
-    updateNote: (state, action) => {
-      const index = state.notes.findIndex(note => note.id === action.payload.id);
+updateNote: (state, action) => {
+      const index = state.notes.findIndex(note => note.Id === action.payload.Id);
       if (index !== -1) {
         state.notes[index] = { ...state.notes[index], ...action.payload };
       }
     },
     deleteNote: (state, action) => {
-      state.notes = state.notes.filter(note => note.id !== action.payload);
+      state.notes = state.notes.filter(note => note.Id !== action.payload);
       if (state.activeNoteId === action.payload) {
         state.activeNoteId = null;
       }
@@ -40,14 +40,14 @@ const notesSlice = createSlice({
     addFolder: (state, action) => {
       state.folders.push(action.payload);
     },
-    updateFolder: (state, action) => {
-      const index = state.folders.findIndex(folder => folder.id === action.payload.id);
+updateFolder: (state, action) => {
+      const index = state.folders.findIndex(folder => folder.Id === action.payload.Id);
       if (index !== -1) {
         state.folders[index] = { ...state.folders[index], ...action.payload };
       }
     },
     deleteFolder: (state, action) => {
-      state.folders = state.folders.filter(folder => folder.id !== action.payload);
+      state.folders = state.folders.filter(folder => folder.Id !== action.payload);
       // Move notes from deleted folder to "All Notes"
       state.notes = state.notes.map(note => 
         note.folderId === action.payload ? { ...note, folderId: null } : note

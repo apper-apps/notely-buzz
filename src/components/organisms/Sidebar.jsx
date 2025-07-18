@@ -6,29 +6,46 @@ import IconButton from "@/components/atoms/IconButton";
 import FolderItem from "@/components/molecules/FolderItem";
 import FolderCreator from "@/components/molecules/FolderCreator";
 import NoteItem from "@/components/molecules/NoteItem";
+import TemplateGallery from "@/components/organisms/TemplateGallery";
 import { useNotes } from "@/hooks/useNotes";
 import { cn } from "@/utils/cn";
-
 const Sidebar = ({ isOpen, onClose, className }) => {
   const [selectedFolder, setSelectedFolder] = useState(null);
   const [showFolderCreator, setShowFolderCreator] = useState(false);
+  const [showTemplateGallery, setShowTemplateGallery] = useState(false);
   const { 
     folders, 
     notes, 
     activeNoteId, 
     createNote, 
+    createNoteFromTemplate,
     setActiveNoteId,
     getNotesByFolder 
   } = useNotes();
 
-  const handleCreateNote = async () => {
-    const newNote = await createNote({
-      folderId: selectedFolder,
-      title: "New Note",
-      content: ""
-    });
-    if (newNote) {
-      setActiveNoteId(newNote.Id);
+const handleCreateNote = async () => {
+    setShowTemplateGallery(true);
+  };
+
+  const handleTemplateSelect = async (template) => {
+    try {
+      let newNote;
+      if (template) {
+        newNote = await createNoteFromTemplate(template, {
+          folderId: selectedFolder
+        });
+      } else {
+        newNote = await createNote({
+          folderId: selectedFolder,
+          title: "New Note",
+          content: ""
+        });
+      }
+      if (newNote) {
+        setActiveNoteId(newNote.Id);
+      }
+    } catch (error) {
+      console.error("Failed to create note:", error);
     }
   };
 
@@ -246,10 +263,16 @@ const Sidebar = ({ isOpen, onClose, className }) => {
 
   return (
     <>
-      <DesktopSidebar />
+<DesktopSidebar />
       <MobileSidebar />
+      
+      {/* Template Gallery Modal */}
+      <TemplateGallery
+        isOpen={showTemplateGallery}
+        onClose={() => setShowTemplateGallery(false)}
+        onSelectTemplate={handleTemplateSelect}
+      />
     </>
   );
 };
-
 export default Sidebar;
