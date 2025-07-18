@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "name": "Getting Started",
+    "color": "#5B4B8A",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "noteCount": 1
+  },
+  {
+    "Id": 2,
+    "name": "Work",
+    "color": "#E67E50",
+    "createdAt": "2024-01-15T14:30:00.000Z",
+    "noteCount": 1
+  },
+  {
+    "Id": 3,
+    "name": "Personal",
+    "color": "#4CAF50",
+    "createdAt": "2024-01-14T20:15:00.000Z",
+    "noteCount": 1
+  },
+  {
+    "Id": 4,
+    "name": "Ideas",
+    "color": "#42A5F5",
+    "createdAt": "2024-01-13T09:20:00.000Z",
+    "noteCount": 1
+  }
+]

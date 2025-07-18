@@ -1,0 +1,47 @@
+[
+  {
+    "Id": 1,
+    "title": "Welcome to Notely",
+    "content": "# Welcome to Notely\n\nThis is your first note! Notely is designed to make capturing and organizing your thoughts effortless.\n\n## Features\n\n- **Instant capture**: Start typing immediately\n- **Auto-save**: Your notes are saved automatically every 2 seconds\n- **Markdown support**: Format your notes with markdown\n- **Search**: Find anything across all your notes\n- **Folders**: Organize your notes into folders\n\n## Getting Started\n\n1. Start typing in the editor\n2. Create folders to organize your notes\n3. Use the search bar to find specific content\n4. Toggle between edit and preview modes\n\n*Happy note-taking!*",
+    "folderId": "1",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z",
+    "isPinned": true
+  },
+  {
+    "Id": 2,
+    "title": "Meeting Notes - Q1 Planning",
+    "content": "# Q1 Planning Meeting\n\n**Date**: January 15, 2024\n**Attendees**: Team leads, Product Manager\n\n## Key Objectives\n\n- [ ] Launch new feature set\n- [ ] Improve user onboarding\n- [ ] Optimize performance\n- [x] Conduct user research\n\n## Action Items\n\n1. **Sarah**: Design mockups for new features\n2. **Mike**: Performance audit and optimization\n3. **Lisa**: User research interviews\n\n## Next Steps\n\nSchedule follow-up meeting for February 1st to review progress on all action items.",
+    "folderId": "2",
+    "createdAt": "2024-01-15T14:30:00.000Z",
+    "updatedAt": "2024-01-15T16:45:00.000Z",
+    "isPinned": false
+  },
+  {
+    "Id": 3,
+    "title": "Recipe: Grandmother's Cookies",
+    "content": "# Grandmother's Chocolate Chip Cookies\n\n## Ingredients\n\n- 2 1/4 cups all-purpose flour\n- 1 tsp baking soda\n- 1 tsp salt\n- 1 cup butter, softened\n- 3/4 cup granulated sugar\n- 3/4 cup packed brown sugar\n- 2 large eggs\n- 2 tsp vanilla extract\n- 2 cups chocolate chips\n\n## Instructions\n\n1. Preheat oven to 375°F (190°C)\n2. Mix flour, baking soda, and salt in a bowl\n3. Beat butter and sugars until creamy\n4. Add eggs and vanilla\n5. Gradually add flour mixture\n6. Stir in chocolate chips\n7. Drop rounded tablespoons onto ungreased baking sheets\n8. Bake 9-11 minutes until golden brown\n\n*Makes about 5 dozen cookies*",
+    "folderId": "3",
+    "createdAt": "2024-01-14T20:15:00.000Z",
+    "updatedAt": "2024-01-14T20:30:00.000Z",
+    "isPinned": false
+  },
+  {
+    "Id": 4,
+    "title": "Book Ideas",
+    "content": "# Book Ideas\n\n## Fiction\n\n- **Time Travel Café**: A coffee shop where each cup transports you to a different era\n- **The Memory Thief**: Someone who can steal and manipulate memories\n- **Digital Ghosts**: Consciousness uploaded to the internet after death\n\n## Non-Fiction\n\n- **The Art of Deep Work**: Productivity in the digital age\n- **Minimalist Living**: Finding joy in simplicity\n- **Future of Remote Work**: How technology is changing workplace culture\n\n## Research Topics\n\n- History of note-taking systems\n- Psychology of creativity\n- Impact of digital tools on memory\n\n*Remember to research market demand before committing to any topic.*",
+    "folderId": "4",
+    "createdAt": "2024-01-13T09:20:00.000Z",
+    "updatedAt": "2024-01-15T11:10:00.000Z",
+    "isPinned": false
+  },
+  {
+    "Id": 5,
+    "title": "Travel Checklist",
+    "content": "# Travel Checklist\n\n## Before Departure\n\n- [ ] Book flights and accommodation\n- [ ] Check passport expiration\n- [ ] Get travel insurance\n- [ ] Notify bank of travel dates\n- [ ] Pack essentials\n- [ ] Confirm transportation to airport\n\n## Packing Essentials\n\n### Documents\n- [ ] Passport\n- [ ] Flight tickets\n- [ ] Hotel confirmations\n- [ ] Travel insurance documents\n- [ ] Emergency contact information\n\n### Electronics\n- [ ] Phone charger\n- [ ] Laptop and charger\n- [ ] Camera\n- [ ] Power bank\n- [ ] Travel adapters\n\n### Clothing\n- [ ] Weather-appropriate clothing\n- [ ] Comfortable walking shoes\n- [ ] Formal outfit (if needed)\n- [ ] Undergarments\n- [ ] Sleepwear\n\n## Day of Travel\n\n- [ ] Check-in online\n- [ ] Arrive at airport 2 hours early\n- [ ] Have boarding pass ready\n- [ ] Keep passport accessible",
+    "folderId": null,
+    "createdAt": "2024-01-12T16:45:00.000Z",
+    "updatedAt": "2024-01-12T17:00:00.000Z",
+    "isPinned": false
+  }
+]
